@@ -1,0 +1,1 @@
+Poms = new Mongo.Collection('poms');
