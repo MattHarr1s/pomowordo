@@ -2,6 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './pomsList.html';
+import { name as PomAdd } from '../pomAdd/pomAdd';
 
 class PomsList {
 	constructor ($scope, $reactive) {
@@ -21,7 +22,8 @@ const name ='pomsList';
 
 //create a module
 export default angular.module(name, [
-	angularMeteor
+	angularMeteor,
+	PomAdd
 ]).component(name, {
 	template,
 	controllerAs: name,
