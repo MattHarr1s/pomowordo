@@ -1,17 +1,21 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-angular.module('pomowordo',{
+angular.module('pomowordo',[
 	angularMeteor
-} )
-	.controller('PomsListCtrl', function($scope, $reactive){
-		'ngInject';
+])
+	.component('pomsList', {
+		templateUrl: 'client/pomsList.html',
+		controllerAs: 'pomsList',
+		controller($scope, $reactive){
+			'ngInject';
 
-		$reactive(this).attach($scope);
+			$reactive(this).attach($scope);
 
-		this.helpers({
-			poms(){
-				return Poms.find({});
-			}
-		});
+			this.helpers({
+				poms(){
+					return Poms.find({});
+				}
+			});
+		}
 	});
