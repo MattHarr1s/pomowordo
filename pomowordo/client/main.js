@@ -1,10 +1,10 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-angular.module('pomowordo', [
+angular.module('pomowordo',{
 	angularMeteor
-])
-	.controller('PomsListCtrl', function($scope) {
+} )
+	.controller('PomsListCtrl', function($scope){
 		'ngInject';
 
 		$scope.helpers({
