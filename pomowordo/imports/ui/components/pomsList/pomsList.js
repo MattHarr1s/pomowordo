@@ -2,6 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './pomsList.html';
+import { Poms } from '../../../api/poms';
 import { name as PomAdd } from '../pomAdd/pomAdd';
 
 class PomsList {

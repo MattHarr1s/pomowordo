@@ -1,3 +1,6 @@
+import { Meteor } from 'meteor/meteor'
+import { Poms } from '../imports/api/poms';
+
 Meteor.startup(() =>{
 	if (Poms.find().count() === 0) {
 		const poms = [{
