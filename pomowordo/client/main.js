@@ -4,10 +4,12 @@ import angularMeteor from 'angular-meteor';
 angular.module('pomowordo',{
 	angularMeteor
 } )
-	.controller('PomsListCtrl', function($scope){
+	.controller('PomsListCtrl', function($scope, $reactive){
 		'ngInject';
 
-		$scope.helpers({
+		$reactive(this).attach($scope);
+
+		this.helpers({
 			poms(){
 				return Poms.find({});
 			}

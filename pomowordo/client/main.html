@@ -1,7 +1,7 @@
-<div ng-controller="PomsListCtrl">
+<div ng-controller="PomsListCtrl as vm">
 	<ul>
-		<li ng-repeat="pom in poms">
-			{{pom.name}} {{pom.words}}
+		<li ng-repeat="pom in vm.poms">
+			{{ pom.name }} {{ pom.words }}
 		</li>
 	</ul>
 </div>
