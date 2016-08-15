@@ -1,6 +1,8 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
+import template from './pomsList.html';
+
 class PomsList {
 	constructor ($scope, $reactive) {
 		'ngInject';
@@ -21,7 +23,7 @@ const name ='pomsList';
 export default angular.module(name, [
 	angularMeteor
 ]).component(name, {
-	templateUrl: 'imports/ui/components/${name}/${name}.html',
+	template,
 	controllerAs: name,
 	controller:PomsList
 });
