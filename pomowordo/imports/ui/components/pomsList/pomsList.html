@@ -2,7 +2,9 @@
 
 <ul>
 	<li ng-repeat="pom in pomsList.poms">
-		{{ pom.name }} {{ pom.words }}
+		<a ui-sref="pomWords({ pomId: pom._id })">
+		Book title: {{ pom.name }} Words: {{ pom.words }}
+		</a>
 		<pom-remove pom="pom"></pom-remove>
 	</li>
 </ul>

@@ -4,6 +4,7 @@ import uiRouter from 'angular-ui-router';
 
 import template from './pomowordo.html';
 import { name as PomsList } from '../pomsList/pomsList';
+import { name as PomWords } from '../pomWords/pomWords';
 import { name as Navigation } from '../navigation/navigation';
 
 class Pomowordo {}
@@ -15,6 +16,7 @@ export default angular.module(name, [
 	angularMeteor,
 	uiRouter,
 	PomsList,
+	PomWords,
 	Navigation
 ]).component(name,{
 	template,
@@ -23,10 +25,10 @@ export default angular.module(name, [
 })
 	.config(config);
 
-function config($locationProvider, $urlRouteProvider) {
+function config($locationProvider, $urlRouterProvider) {
 	'ngInject';
 
 	$locationProvider.html5Mode(true);
 
-	$UrlRouterProvider.otherwise('/poms');
+	$urlRouterProvider.otherwise('/poms');
 }
