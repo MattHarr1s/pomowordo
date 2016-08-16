@@ -1,1 +1,9 @@
-The pom you selected is {{ pomWords.pomId }}
+The pom you selected is
+<form>
+	Book Title:<input type="text" ng-model="pomWords.pom.name"/>
+	Genre:<input type="text" ng-model="pomWords.pom.genre"/>
+	Words:<input type="number" ng-model="pomWords.pom.words"/>
+	<button ng-click="pomWords.save()">Save</button>
+</form>
+
+<button ui-sref="poms">Back</button>
