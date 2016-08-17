@@ -1,5 +1,6 @@
 <pom-add></pom-add>
 
+<poms-sort on-change="pomsList.sortChanged(sort)" property="name" order="1"></poms-sort>
 <ul>
 	<li dir-paginate="pom in pomsList.poms | itemsPerPage: pomsList.perPage" total-items="pomsList.pomsCount">
 		<a ui-sref="pomWords({ pomId: pom._id })">

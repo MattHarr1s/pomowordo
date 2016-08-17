@@ -3,8 +3,11 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 import utilsPagination from 'angular-utils-pagination';
 
+import { Counts } from 'meteor/tmeasday:publish-counts';
+
 import template from './pomsList.html';
 import { Poms } from '../../../api/poms/index';
+import { name as PomsSort } from '../pomsSort/pomsSort';
 import { name as PomAdd } from '../pomAdd/pomAdd';
 import { name as PomRemove } from '../pomRemove/pomRemove';
 
@@ -27,6 +30,7 @@ class PomsList {
 			sort: this.getReactively('sort')}
 		]);
 
+
 		this.helpers({
 			poms() {
 				return Poms.find({}, {
@@ -34,7 +38,16 @@ class PomsList {
 				});
 			}
 		});
+	},
+	pomsCount(){
+		return Counts.get('numberOfPoms');
 	}
+	 pageChanged(newPage){
+	 	this.page = newPage;
+	 }
+	 sortChanged(sort){
+	 	this.sort = sort;
+	 }
 }
 
 const name ='pomsList';
@@ -44,6 +57,7 @@ export default angular.module(name, [
 	angularMeteor,
 	uiRouter,
 	utilsPagination,
+	PomsSort,
 	PomAdd,
 	PomRemove
 ]).component(name, {
