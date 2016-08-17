@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Poms } from './collection';
 
 if (Meteor.isServer){
-	Meteor.publish('poms', function () {
+	Meteor.publish('poms', function(options) {
 		const selector = {
 			$or: [{
 				// the public poms
@@ -24,6 +24,6 @@ if (Meteor.isServer){
 				}]
 			}]
 		};
-		return Poms.find(selector);
+		return Poms.find(selector, options);
 	});
 }

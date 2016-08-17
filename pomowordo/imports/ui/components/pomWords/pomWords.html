@@ -8,3 +8,10 @@ The pom you selected is
 </form>
 
 <button ui-sref="poms">Back</button>
+
+<ul>
+	Users:
+	<li ng-repeat="user in pomWords.users">
+		<div>{{ user.emails[0].address }} </div>
+	</li>
+</ul>

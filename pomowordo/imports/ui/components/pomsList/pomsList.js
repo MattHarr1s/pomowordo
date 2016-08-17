@@ -3,7 +3,7 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
 import template from './pomsList.html';
-import { Index } from '../../../api/poms/index';
+import { Poms } from '../../../api/poms/index';
 import { name as PomAdd } from '../pomAdd/pomAdd';
 import { name as PomRemove } from '../pomRemove/pomRemove';
 
@@ -14,7 +14,17 @@ class PomsList {
 
 		$reactive(this).attach($scope);
 
-		this.subscribe('poms');
+		this.perPage = 3;
+		this.page = 1;
+		this.sort = {
+			name: 1
+		}
+
+		this.subscribe('poms',()=> [{
+			limit: parseInt(this.perPage),
+			skip: parseInt((this.getReactively('page')- 1) * this.perPage),
+			sort: this.getReactively('sort')}
+		]);
 
 		this.helpers({
 			poms() {

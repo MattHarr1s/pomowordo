@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { name as PomAdd } from '../pomAdd';
 import { Poms } from '../../../../api/poms';
 import 'angular-mocks';
@@ -12,7 +13,11 @@ describe('PomAdd', () => {
 		const pom = {
 			name: 'Foo Pom',
 			genre: 'foo',
-			words: 750
+			words: 750,
+			public: true
+		};
+		const user = {
+			_id: 'userId'
 		};
 
 		beforeEach(() => {
@@ -21,6 +26,8 @@ describe('PomAdd', () => {
 					$scope: $rootScope.$new(true)
 				});
 			});
+
+			spyOn(Meteor, 'user').and.returnValue(user);
 		});
 
 		describe('reset()', () => {
@@ -28,7 +35,7 @@ describe('PomAdd', () => {
 				controller.pom = pom;
 				controller.reset();
 
-				expect(controller.party).toEqual({});
+				expect(controller.pom).toEqual({});
 			});
 		});
 
@@ -43,7 +50,13 @@ describe('PomAdd', () => {
 			});
 
 			it('should insert a new pom', () => {
-				expect(Poms.insert).toHaveBeenCalledWith(pom);
+				expect(Poms.insert).toHaveBeenCalledWith({
+					name: pom.name,
+					genre: pom.genre,
+					words: pom.words,
+					public: pom.public,
+					owner: user._id
+				});
 			});
 
 			it('should call reset()', () => {

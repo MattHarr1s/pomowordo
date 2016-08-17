@@ -5,7 +5,7 @@ import uiRouter from 'angular-ui-router';
 import { Meteor } from 'meteor/meteor';
 
 import template from './pomWords.html';
-import { Index } from '../../../api/poms/index';
+import { Poms } from '../../../api/poms/index';
 
 class PomWords {
 	constructor($stateParams, $scope, $reactive){
@@ -15,11 +15,17 @@ class PomWords {
 
 		this.pomId = $stateParams.pomId;
 
+		this.subscribe('poms');
+		this.subscribe('users');
+
 		this.helpers({
 			pom(){
 				return Poms.findOne({
 					_id: $stateParams.pomId
 				});
+			},
+			users(){
+				return Meteor.users.find({});
 			}
 		});
 	}
