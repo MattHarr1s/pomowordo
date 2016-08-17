@@ -1,10 +1,13 @@
 <pom-add></pom-add>
 
 <ul>
-	<li ng-repeat="pom in pomsList.poms">
+	<li dir-paginate="pom in pomsList.poms | itemsPerPage: pomsList.perPage" total-items="pomsList.pomsCount">
 		<a ui-sref="pomWords({ pomId: pom._id })">
 		Book title: {{ pom.name }} Words: {{ pom.words }}
 		</a>
+
 		<pom-remove pom="pom"></pom-remove>
 	</li>
 </ul>
+
+<dir-pagination-controls on-page-change="pomsList.pageChanged(newPageNumber)"><</dir-pagination-controls>

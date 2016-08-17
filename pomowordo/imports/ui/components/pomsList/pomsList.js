@@ -1,6 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
+import utilsPagination from 'angular-utils-pagination';
 
 import template from './pomsList.html';
 import { Poms } from '../../../api/poms/index';
@@ -28,7 +29,9 @@ class PomsList {
 
 		this.helpers({
 			poms() {
-				return Poms.find({});
+				return Poms.find({}, {
+					sort: this.getReactively('sort')
+				});
 			}
 		});
 	}
@@ -40,6 +43,7 @@ const name ='pomsList';
 export default angular.module(name, [
 	angularMeteor,
 	uiRouter,
+	utilsPagination,
 	PomAdd,
 	PomRemove
 ]).component(name, {
