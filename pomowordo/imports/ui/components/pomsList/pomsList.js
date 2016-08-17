@@ -3,7 +3,7 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
 import template from './pomsList.html';
-import { Poms } from '../../../api/poms';
+import { Index } from '../../../api/poms/index';
 import { name as PomAdd } from '../pomAdd/pomAdd';
 import { name as PomRemove } from '../pomRemove/pomRemove';
 
@@ -13,6 +13,8 @@ class PomsList {
 		'ngInject';
 
 		$reactive(this).attach($scope);
+
+		this.subscribe('poms');
 
 		this.helpers({
 			poms() {

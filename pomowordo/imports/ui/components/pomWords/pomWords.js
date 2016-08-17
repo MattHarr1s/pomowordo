@@ -2,8 +2,10 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
+import { Meteor } from 'meteor/meteor';
+
 import template from './pomWords.html';
-import { Poms } from '../../../api/poms';
+import { Index } from '../../../api/poms/index';
 
 class PomWords {
 	constructor($stateParams, $scope, $reactive){
@@ -29,7 +31,8 @@ class PomWords {
 			$set:{
 				name: this.pom.name,
 				genre: this.pom.genre,
-				words: this.pom.words
+				words: this.pom.words,
+				public: this.pom.public
 			}
 		},(error) => {
 			if (error){
@@ -59,6 +62,15 @@ function config($stateProvider){
 
 	$stateProvider.state('pomWords', {
 		url: '/poms/:pomId',
-		template: '<pom-words></pom-words>'
+		template: '<pom-words></pom-words>',
+		resolve: {
+			currentUser($q){
+				if (Meteor.userId() === null){
+					return $q.reject('AUTH_REQUIRED');
+				} else {
+					return $q.resolve();
+				}
+			}
+		}
 	});
 }

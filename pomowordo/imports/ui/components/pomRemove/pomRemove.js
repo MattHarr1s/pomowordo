@@ -2,7 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './pomRemove.html';
-import { Poms } from '../../../api/poms';
+import { Index } from '../../../api/poms/index';
 
 class PomRemove{
 	remove(){

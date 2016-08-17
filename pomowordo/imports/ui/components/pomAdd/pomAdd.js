@@ -4,7 +4,7 @@ import angularMeteor from 'angular-meteor';
 import { Meteor } from 'meteor/meteor';
 
 import template from './pomAdd.html';
-import { Poms } from '../../../api/poms';
+import { Index } from '../../../api/poms/index';
 class PomAdd {
 	constructor(){
 		this.pom = {};
