@@ -17,7 +17,8 @@ export default angular.module(name, [
 	uiRouter,
 	PomsList,
 	PomWords,
-	Navigation
+	Navigation,
+	'accounts.ui'
 ]).component(name,{
 	template,
 	controllerAs: name,

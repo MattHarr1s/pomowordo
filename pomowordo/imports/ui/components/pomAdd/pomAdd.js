@@ -1,6 +1,8 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
+import { Meteor } from 'meteor/meteor';
+
 import template from './pomAdd.html';
 import { Poms } from '../../../api/poms';
 class PomAdd {
@@ -9,6 +11,7 @@ class PomAdd {
 	}
 
 	submit(){
+		this.pom.owner = Meteor.user()._id;
 		Poms.insert(this.pom);
 		this.reset();
 	}
